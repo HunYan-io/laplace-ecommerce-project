@@ -1,0 +1,36 @@
+﻿@model Ecommerce.Models.Admin;
+
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="container py-5 text-white">
+     @if (ViewData["Error"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+             @ViewData["Error"]
+        </div>
+    }
+    <form asp-controller="Admin" asp-action="Login" method="post" class="my-5 d-flex flex-column mx-auto h-100 justify-content-center" style="max-width: 450px;">
+        <h1 class="mb-5">Login</h1>
+        
+        <div>
+            <label class="form-label" asp-for="Email">Email</label>
+            <input type="email" class="bg-dark form-control text-white "
+                   placeholder="example@gmail.com" asp-for="Email"/>
+        </div>
+        
+
+        <div class="mt-4">
+            <div >
+                <label class="form-label" asp-for="Password">Password</label>
+                <input type="password" class="bg-dark form-control text-white  "
+                           asp-for="Password" placeholder="Password" />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-5 ms-auto px-5">
+            <div class="d-flex justify-content-between">
+                <span>Login <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+            </div>
+        </button>
+    </form>
+</div>

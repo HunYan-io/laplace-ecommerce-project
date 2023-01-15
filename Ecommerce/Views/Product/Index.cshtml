@@ -1,0 +1,32 @@
+﻿@model Ecommerce.Models.Product
+
+@{
+    ViewData["Title"] = @Model.Name;
+}
+
+<div class="container py-5">
+    @if (ViewData["Alert"] != null)
+    {
+        <div class="alert alert-primary" role="alert">
+             @ViewData["Alert"]
+        </div>
+    }
+    <div class="row align-items-stretch">
+    <div class="col-12 col-sm-6">
+        <img class="w-100" src="@Model.Image" />
+    </div>
+    <div class="d-flex flex-column col-sm-6 text-white justify-content-center">
+        <h1>@Model.Name</h1>
+        <p class="lead">@Model.Price TND</p>
+        <p>@Model.Description</p>
+        <form asp-controller="Product" asp-action="AddToCart" method="post" class="d-flex flex-wrap mt-2" style="margin-right: -1rem;">
+            <div class="input-group me-3 mb-2 flex-grow-1 flex-shrink-1" style="width: 200px;">
+              <span class="input-group-text text-white border-secondary bg-secondary">Quantity</span>
+              <input name="quantity" type="number" aria-label="Quantity" class="form-control border-secondary bg-dark text-white" size="1" value="1" min="1" style="min-width: 0; flex-basis: 0;">
+            </div>
+            <input type="hidden" name="id" value="@Model.Id">
+            <button type="submit" class="btn btn-primary me-3 mb-2" style="flex-grow: 1; flex-basis: 200px;">Add to cart</button>
+        </form>
+    </div>
+</div>
+</div>
